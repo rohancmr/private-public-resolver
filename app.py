@@ -11,7 +11,7 @@ def hello():
 	
 @app.route("/get_my_ip", methods=["GET"])
 def get_my_ip():
-    return jsonify({'ip': request.remote_addr}), 200
+    return jsonify({'ip': request.remote_addr, 'forwarder-for': request.headers['X-Forwarded-For']}), 200
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80, debug=True)
