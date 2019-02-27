@@ -4,8 +4,10 @@ MAINTAINER Rohan Kumar (rohank@nvidia.com)
 RUN mkdir -p /python
 WORKDIR /python
 
-COPY /root/private-public-resolution/app.py /python
-COPY /root/private-public-resolution/requirements.txt /python
-RUN pip install -r /python/requirements.txt
+RUN git clone https://github.com/rohancmr/private-public-resolver.git && \
+	pip install -r /python/private-public-resolver/requirements.txt
+
+WORKDIR /python/private-public-resolver
+
 CMD [ "python", "./app.py" ]
 
